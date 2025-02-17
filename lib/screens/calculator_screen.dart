@@ -4,6 +4,7 @@ import '../data/drugs_data.dart';
 import 'package:provider/provider.dart';
 import '../data/user_data.dart';
 
+
 class UserData {
   static String email = '';
   static String password = '';
@@ -89,6 +90,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               throw Exception("No standard dose defined for ${selectedDrug!.name}");
           }
           break;
+
+        
+        case "weightDivision":
+          final params = selectedDrug!.parameters!;
+          double divisor = params["divisor"];
+          int frequency = params ["frequency"];
+
+          double dose = weight / divisor;
+          doseResult = "هر $frequency ساعت ${dose.toStringAsFixed(1)} سی سی مصرف شود ";
+
+          break;
+
+
+
+
 
         case "weightBased":
           final params = selectedDrug!.parameters!;
