@@ -47,7 +47,7 @@ dependencies:
   image_picker: ^1.1.2
   #supabase_flutter:
   email_validator:
-  dropdown_search:
+  dropdown_button2: ^2.3.9
 
 
 dev_dependencies:

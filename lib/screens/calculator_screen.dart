@@ -329,7 +329,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     items: drugs.map((Drug drug) {
                       return DropdownMenuItem<Drug>(
                         value: drug,
-                        child: Text("${drug.name} ${drug.concentration}"//, style: TextStyle(fontWeight: FontWeight.bold ),
+                        child: Text("${drug.name} ${drug.concentration} || ${drug.doseageform}", style: TextStyle(fontWeight: FontWeight.bold ),
                         ),
                       );
                     }).toList(),
