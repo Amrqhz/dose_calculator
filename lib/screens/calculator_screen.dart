@@ -314,6 +314,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   ],
                 ),
                 const SizedBox(height: 40),
+
+                //make change to show a searchable dropdown 
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
                   decoration: BoxDecoration(
@@ -326,10 +328,38 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                     hint: const Text('Choose a drug'),
                     value: selectedDrug,
+                    isExpanded: true,
                     items: drugs.map((Drug drug) {
                       return DropdownMenuItem<Drug>(
                         value: drug,
-                        child: Text("${drug.name} ${drug.concentration} || ${drug.doseageform}", style: TextStyle(fontWeight: FontWeight.bold ),
+                        child: Container(
+                          constraints: BoxConstraints(maxWidth: double.infinity),
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  "${drug.name} ${drug.concentration}", 
+                                  overflow: TextOverflow.ellipsis,
+                          
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 8,vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF67B639),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Text(
+                                  drug.doseageform,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }).toList(),

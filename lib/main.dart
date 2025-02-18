@@ -33,10 +33,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Drug Dose Calculator',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
         scaffoldBackgroundColor: const Color(0xFF90A4AE),
         textTheme: GoogleFonts.robotoTextTheme(
           const TextTheme(bodyLarge: TextStyle(fontWeight: FontWeight.bold, color: Colors.black) )
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 93, 109, 117),
+        textTheme: GoogleFonts.robotoTextTheme(
+          const TextTheme(bodyLarge: TextStyle(fontWeight: FontWeight.bold, color: Colors.black))
+
         ),
       ),
       home:  CalculatorScreen(),
