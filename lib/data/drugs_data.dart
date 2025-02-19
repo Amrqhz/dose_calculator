@@ -3,9 +3,9 @@ import '../models/drug.dart';
 final List<Drug> drugs = [
 
 
-    Drug(
+  Drug(
     name: "Acetaminophen",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "120mg/5ml",
     calculationType: "weightBased",
     parameters: {
@@ -16,12 +16,26 @@ final List<Drug> drugs = [
     //forms: ["شربت", "قرص"],
     note: "بیشتر از 4 دوز در طی 24 ساعت مصرف نگردد",
   ),
+  Drug(
+    name: "Acetaminophen (parakid)",
+    doseageform: "Susp",
+    concentration: "100mg/1ml",
+    calculationType: "weightDivision",
+    parameters: {
+      "divisor": 0.66, // 
+      "maxDose": 4000.0, // 1000mg maximum
+      "frequency": 6, // every 6 hours
+    },
+    
+    note: "در درمان OTC طول دوره درمان با استامینوفن در نوزادان 3 روز و در نوجوانان 5 روز است.",
+  ),
+
 
   Drug(
     name: "Amoxicillin (فارنژیت، سینوزیت)",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     parameters: {
       "dosePerKg": 50.0, // 25mg per kg
       "maxDose": 1000.0, // 500mg maximum
@@ -33,7 +47,7 @@ final List<Drug> drugs = [
                                                                       
   Drug(                 
     name: "Amoxicillin (AOM)",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
     //dosageCalculation: "weight/4",
@@ -48,20 +62,19 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Azithromycin",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "100mg/5ml",
     calculationType: "weightDivision",
-    //dosageCalculation: "weight/4",
-    note: "در روز اول، دو برابر دوز مصرف شود",
-    //forms: ["شربت", "قرص"],
     parameters: {
-      "divisor": 2.0,
-      "frequency": 24,
-    }
+      "divisor": 2.0, // 
+      "maxDose": 500.0, // 1000mg maximum
+      "frequency": 24, // every 6 hours
+    },
+    note: "در روز اول دو برابر دوز مصرف گردد"
   ),
   Drug(
     name: "Azithromycin",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "200mg/5ml",
     calculationType: "weightBased",
     parameters: {
@@ -76,7 +89,7 @@ final List<Drug> drugs = [
 
     Drug(
     name: "Cephalexin",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
     //dosageCalculation: "weight/4",
@@ -87,20 +100,30 @@ final List<Drug> drugs = [
     },
     //forms: ["شربت", "قرص"],
   ),
+    Drug(
+    name: "Diphenhydramine",
+    doseageform: "Syr",
+    concentration: "12.5mg/5ml",
+    calculationType: "weightDivision",
+    parameters: {
+      "divisor": 2.0, // 
+      "maxDose": 4000.0, // 1000mg maximum
+      "frequency": 8, // every 6 hours
+    },
+    
+    note: "در درمان OTC طول دوره درمان با استامینوفن در نوزادان 3 روز و در نوجوانان 5 روز است.",
+  ),
   Drug(
     name: "Diphenhydramine Compound",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "12.5mg/5ml",
     calculationType: "standard",
-    //dosageCalculation: "weight/4",
-  
-    //forms: ["شربت", "قرص"],
   ),
 
 
   Drug(
     name: "Ibuprofen",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "100mg/5ml",
     calculationType: "weightAndAge",
     parameters: {
@@ -109,13 +132,12 @@ final List<Drug> drugs = [
       "minAge": 3, // minimum age in years
       "frequency": 8, // every 8 hours
     },
-    //forms: ["شربت", "قرص"],
     note: "همراه با غذا مصرف گردد. در موارد خونریزی گوارشی همراه با پنتاپرازول یا امپرازول تجویز گردد",
   ),
 
   Drug(
     name: "Lactolose",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "10g/15ml",
     calculationType: "standard",
     //dosageCalculation: "weight/4",
@@ -129,7 +151,7 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Pedilact",
-    doseageform: "Syrup",
+    doseageform: "Syr",
     concentration: "10g/15ml",
     calculationType: "standard",
     //dosageCalculation: "weight/4",

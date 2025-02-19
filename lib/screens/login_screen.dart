@@ -137,11 +137,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: const Text("Forgot your Email or password?", style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
-                      child: const Text('Register here!', style: TextStyle(fontWeight: FontWeight.bold),),
+                    Flexible(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                        child: const Text('Register here!', style: TextStyle(fontWeight: FontWeight.bold),),
+                      ),
                     ),
                   ],
                 ),

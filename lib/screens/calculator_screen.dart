@@ -3,6 +3,17 @@ import '../models/drug.dart';
 import '../data/drugs_data.dart';
 import 'package:provider/provider.dart';
 import '../data/user_data.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
+
+
+Future<void> _launchURL(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    throw Exception('Could not launch $url');
+  }
+}
+
 
 
 class UserData {
@@ -29,7 +40,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   // Add these variables for subscription tracking
   final int totalDays = 30; // Total subscription days
-  final int remainingDays = 30; // Days remaining (you should get this from your backend)
+  final int remainingDays = 12; // Days remaining (you should get this from your backend)
 
   double get subscriptionPercentage => remainingDays / totalDays;
 
@@ -95,10 +106,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         case "weightDivision":
           final params = selectedDrug!.parameters!;
           double divisor = params["divisor"];
+          double maxDose = params ["maxDose"]; 
           int frequency = params ["frequency"];
 
           double dose = weight / divisor;
           doseResult = "هر $frequency ساعت ${dose.toStringAsFixed(1)} سی سی مصرف شود ";
+
+          if (dose > maxDose){
+            dose = maxDose;
+          }
 
           break;
 
@@ -305,12 +321,19 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
+                      icon: const Icon(Icons.shopping_basket_outlined),
+                      onPressed: (){
+                        Navigator.pushNamed(context, "/login");
+                      },
+                    ),
+
+                    IconButton(
                       icon: const Icon(Icons.person_outline),
                       onPressed: () {
                         _scaffoldKey.currentState?.openDrawer();
                       },
                     ),
-                    const Icon(Icons.shopping_basket_outlined),
+                    
                   ],
                 ),
                 const SizedBox(height: 40),
@@ -335,6 +358,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         child: Container(
                           constraints: BoxConstraints(maxWidth: double.infinity),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
                                 child: Text(
@@ -452,19 +476,27 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushNamed(context, '/about');
                   },
                   child: const Text('🫧 !Tell your friends about us'),
                 ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.telegram, size: 20),
+                  children:[
+                    IconButton(
+                      icon:  Icon(Icons.telegram, size: 20),
+                      onPressed: () => _launchURL('https://t.me/amrqhz'),
+                    ),
                     SizedBox(width: 10),
                     Icon(Icons.email, size: 20),
                     SizedBox(width: 10),
-                    Icon(Icons.share, size: 20),
+                    IconButton(
+                      icon: Icon(Icons.share, size: 20),
+                      onPressed: (){
+                        Share.share("check out this awesome app: https://yourlink.com");
+                      },
+                    ),
                   ],
                 )
 

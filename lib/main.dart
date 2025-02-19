@@ -1,3 +1,4 @@
+import 'package:dose_calculator/screens/about_screen.dart';
 import 'package:dose_calculator/screens/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) =>  LoginScreen(),
         '/register': (context) => RegisterScreen(),
         '/calculator': (context) =>  CalculatorScreen(),
+        '/about': (context) => AboutScreen(),
         '/mainpage': (context) => MainPage()
       },
     );
