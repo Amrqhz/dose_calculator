@@ -489,7 +489,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       onPressed: () => _launchURL('https://t.me/amrqhz'),
                     ),
                     SizedBox(width: 10),
-                    Icon(Icons.email, size: 20),
+                    IconButton(
+                      icon: Icon(Icons.email, size: 20),
+                      onPressed: () => _launchURL("https://x.com/amrqhz"),
+                    ),
                     SizedBox(width: 10),
                     IconButton(
                       icon: Icon(Icons.share, size: 20),
