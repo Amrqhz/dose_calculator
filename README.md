@@ -1,5 +1,5 @@
 
-!(assets/doctors.png)
+![QUICK DOSE](./assets/doctors.png)
 
 
 # dose_calculator
