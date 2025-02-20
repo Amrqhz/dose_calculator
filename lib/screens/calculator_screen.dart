@@ -38,6 +38,33 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController ageController = TextEditingController();
   String? result;
 
+
+  // Add this function at the beginning of your _CalculatorScreenState class
+  Color getDosageFormColor(String dosageform) {
+    switch (dosageform) {
+      case 'Syr':
+        return Color(0xFF67B639); // Green
+      case 'Tab':
+        return Color(0xFFE74C3C); // Red
+      case 'Inj':
+        return Color(0xFF3498DB); // Blue
+      case 'Susp':
+        return Color(0xFFF39C12); // Orange
+      case 'Drops':
+        return Color(0xFF9B59B6); // Purple
+      case 'cream':
+      case 'Oint':
+        return Color(0xFF34495E); // Dark Blue Grey
+      default:
+        return Color.fromARGB(255, 166, 160, 149); // Grey (default)
+    }
+  }
+
+
+
+
+
+
   // Add these variables for subscription tracking
   final int totalDays = 30; // Total subscription days
   final int remainingDays = 12; // Days remaining (you should get this from your backend)
@@ -94,6 +121,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             break;
             case "Pedilact":
             doseResult = "روزانه 5 قطره ";
+            break;
+            case "Acetaminophen":
+            doseResult= "هر 8 ساعت 325 میلی گرم مصرف میگردد.";
             break;
 
 
@@ -371,14 +401,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 8,vertical: 2),
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF67B639),
+                                  color: getDosageFormColor(drug.dosageform),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
-                                  drug.doseageform,
+                                  drug.dosageform,
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: Colors.black,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),

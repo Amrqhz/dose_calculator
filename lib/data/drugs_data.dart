@@ -5,7 +5,7 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Acetaminophen",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "120mg/5ml",
     calculationType: "weightBased",
     parameters: {
@@ -18,7 +18,7 @@ final List<Drug> drugs = [
   ),
   Drug(
     name: "Acetaminophen (parakid)",
-    doseageform: "Susp",
+    dosageform: "Susp",
     concentration: "100mg/1ml",
     calculationType: "weightDivision",
     parameters: {
@@ -35,7 +35,7 @@ final List<Drug> drugs = [
     name: "Amoxicillin (فارنژیت، سینوزیت)",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
-    doseageform: "Syr",
+    dosageform: "Syr",
     parameters: {
       "dosePerKg": 50.0, // 25mg per kg
       "maxDose": 1000.0, // 500mg maximum
@@ -47,7 +47,7 @@ final List<Drug> drugs = [
                                                                       
   Drug(                 
     name: "Amoxicillin (AOM)",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
     //dosageCalculation: "weight/4",
@@ -62,7 +62,7 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Azithromycin",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "100mg/5ml",
     calculationType: "weightDivision",
     parameters: {
@@ -74,7 +74,7 @@ final List<Drug> drugs = [
   ),
   Drug(
     name: "Azithromycin",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "200mg/5ml",
     calculationType: "weightBased",
     parameters: {
@@ -89,7 +89,7 @@ final List<Drug> drugs = [
 
     Drug(
     name: "Cephalexin",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "250mg/5ml",
     calculationType: "weightBased",
     //dosageCalculation: "weight/4",
@@ -102,7 +102,7 @@ final List<Drug> drugs = [
   ),
     Drug(
     name: "Diphenhydramine",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "12.5mg/5ml",
     calculationType: "weightDivision",
     parameters: {
@@ -115,7 +115,7 @@ final List<Drug> drugs = [
   ),
   Drug(
     name: "Diphenhydramine Compound",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "12.5mg/5ml",
     calculationType: "standard",
   ),
@@ -123,7 +123,7 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Ibuprofen",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "100mg/5ml",
     calculationType: "weightAndAge",
     parameters: {
@@ -137,7 +137,7 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Lactolose",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "10g/15ml",
     calculationType: "standard",
     //dosageCalculation: "weight/4",
@@ -151,12 +151,24 @@ final List<Drug> drugs = [
 
   Drug(
     name: "Pedilact",
-    doseageform: "Syr",
+    dosageform: "Syr",
     concentration: "10g/15ml",
     calculationType: "standard",
     //dosageCalculation: "weight/4",
     parameters: {
       "minAge": 2,
+    },
+    //forms: ["شربت", "قرص"],
+  ),
+
+  Drug(
+    name: "Acetaminophen",
+    dosageform: "Tab",
+    concentration: "325mg",
+    calculationType: "standard",
+    //dosageCalculation: "weight/4",
+    parameters: {
+      "minAge": 5,
     },
     //forms: ["شربت", "قرص"],
   ),
