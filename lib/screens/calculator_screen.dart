@@ -182,7 +182,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           final params = selectedDrug!.parameters!;
         
           if (age < params['minAge']) {
-            throw Exception("Patient age below minimum recommended age");
+            throw "بیمار دارای حداقل سن لازم برای مصرف داروی انتخاب شده نمیباشد.";
           }
         
           double dose;
@@ -394,14 +394,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                 child: Text(
                                   "${drug.name} ", 
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Flexible(
                                 child: Text(
                                   "${drug.concentration} ", 
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(fontSize: 12,fontWeight: FontWeight.w900),
                                 ),
                               ),
                               const SizedBox(width: 8),
@@ -466,7 +466,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      labelText: 'Age',
+                      labelText: 'Age(years old)',
                       labelStyle: TextStyle(color: Colors.black54),
                       alignLabelWithHint: false,
                       floatingLabelAlignment: FloatingLabelAlignment.center
@@ -498,7 +498,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       result!,
                       style: const TextStyle(
                         fontSize: 18,
-                        //fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                       ),
                       textAlign: TextAlign.center,
                     ),

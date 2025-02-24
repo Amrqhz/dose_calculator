@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:typed_data';
-import 'package:image_picker/image_picker.dart'; // Import the image_picker package
+import 'package:image_picker/image_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_text_field.dart';
-import '../models/auth_service.dart'; // Import your AuthService
 
-
-
-
-class RegisterScreen extends StatefulWidget { // Changed to StatefulWidget
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
@@ -17,16 +13,15 @@ class RegisterScreen extends StatefulWidget { // Changed to StatefulWidget
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController(); // Added controllers
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _idController = TextEditingController();
   Uint8List? _idImage;
-  final ImagePicker _picker = ImagePicker(); // Instance of ImagePicker
+  final ImagePicker _picker = ImagePicker();
   bool _isLoading = false;
 
   @override
   void dispose() {
-    // Dispose of the controllers when the widget is disposed.
     _emailController.dispose();
     _passwordController.dispose();
     _idController.dispose();
@@ -42,9 +37,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
       });
     }
   }
-  
 
- 
+  void _register() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      try {
+        // Implement your registration logic here
+        // For example, send data to a custom backend
+        // await YourCustomBackend.registerUser(
+        //   email: _emailController.text.trim(),
+        //   password: _passwordController.text.trim(),
+        //   id: _idController.text.trim(),
+        //   idImage: _idImage,
+        // );
+
+        // Navigate to the next screen upon successful registration
+        Navigator.pushReplacementNamed(context, '/login');
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +91,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: GoogleFonts.roboto(
                     fontSize: 36,
                     fontWeight: FontWeight.w900,
-        
                   ),
                 ),
                 const SizedBox(height: 40),
                 CustomTextField(
                   label: 'Email:',
                   isPassword: false,
-                  controller: _emailController, // Added controller
+                  controller: _emailController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your Email';
@@ -92,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 CustomTextField(
                   label: 'Password:',
                   isPassword: true,
-                  controller: _passwordController, // Added controller
+                  controller: _passwordController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
@@ -107,11 +124,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 CustomTextField(
                   label: 'ID:',
                   isPassword: false,
+                  controller: _idController,
                   validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your ID';
-                  }
-                  return null;
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your ID';
+                    }
+                    return null;
                   },
                 ),
                 const SizedBox(height: 20),
@@ -126,33 +144,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Text(_idImage == null ? 'Upload your ID image' : 'Image Selected'),
                   ),
                 ),
-                
-                
-        
-        
-        
-        
                 const SizedBox(height: 30),
                 ElevatedButton(
-                  onPressed: _isLoading ? null : () async {
-                      if (_formKey.currentState!.validate()) {
-                        setState(() {
-                          _isLoading = true;
-                        });
-                        
-                        try {
-                          await AuthService().signup(
-                            email: _emailController.text.trim(),
-                            password: _passwordController.text.trim(),
-                            context: context,
-                          );
-                        } finally {
-                          setState(() {
-                            _isLoading = false;
-                          });
-                        }
-                      }
-                    },
+                  onPressed: _isLoading ? null : _register,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF67B639),
                     shape: RoundedRectangleBorder(

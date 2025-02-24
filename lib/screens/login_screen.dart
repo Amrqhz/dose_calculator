@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_text_field.dart';
@@ -26,12 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  Future signIn() async{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
+
 
 
   @override
@@ -55,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       Navigator.of(context).pushNamedAndRemoveUntil('/calculator', (Route<dynamic> route) => false);
     } else {
-      print('Please provide valid input');
+      ('Please provide valid input');
     }
   }
 
@@ -150,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Spacer(),
                 TextButton(
                     onPressed: _login, 
-                    child: const Text('Welcome', style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),),
+                    child: const Text('Welcome 🫧', style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),),
                   ),
             
                 const SizedBox(height: 20),
