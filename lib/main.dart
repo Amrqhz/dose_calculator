@@ -1,5 +1,6 @@
 import 'package:dose_calculator/screens/about_screen.dart';
 import 'package:dose_calculator/screens/main_page.dart';
+import 'package:dose_calculator/screens/shoping_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegisterScreen(),
         '/calculator': (context) =>  CalculatorScreen(),
         '/about': (context) => AboutScreen(),
+        '/shoping': (context) => ShopingScreen(),
         '/mainpage': (context) => MainPage()
       },
     );

@@ -353,7 +353,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     IconButton(
                       icon: const Icon(Icons.shopping_basket_outlined),
                       onPressed: (){
-                        Navigator.pushNamed(context, "/login");
+                        Navigator.pushNamed(context, "/shoping");
                       },
                     ),
 
@@ -366,7 +366,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
 
                 //make change to show a searchable dropdown 
                 Container(
@@ -392,9 +392,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  "${drug.name} ${drug.concentration}", 
+                                  "${drug.name} ", 
                                   overflow: TextOverflow.ellipsis,
-                          
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Flexible(
+                                child: Text(
+                                  "${drug.concentration} ", 
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 11),
                                 ),
                               ),
                               const SizedBox(width: 8),
@@ -439,7 +446,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
                       border: InputBorder.none,
-                      labelText: '...weight(Kg)',
+                      labelText: 'weight(Kg)',
                       labelStyle: TextStyle(color: Colors.black54),
                       alignLabelWithHint: false,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
@@ -466,7 +473,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 50),
                 ElevatedButton(
                   onPressed: calculateDose,
                   style: ElevatedButton.styleFrom(
@@ -490,8 +497,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     child: Text(
                       result!,
                       style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        //fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.center,
                     ),

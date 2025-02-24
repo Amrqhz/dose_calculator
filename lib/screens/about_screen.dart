@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
+
+
+Future<void> _launchURL(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    throw Exception('Could not launch $url');
+  }
+}
 
 class AboutScreen extends StatelessWidget{
   const AboutScreen ({super.key});
@@ -27,46 +37,50 @@ Widget build(BuildContext context){
               image: AssetImage("assets/doctors.png")
             ),
             const SizedBox(height: 25),
-            Text(" Our mission is to make pharmacist lives easier. \n Need more info? \n Contact us via any social network app by @amrqhz",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),),
-            const SizedBox(height: 25),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.telegram, size: 20),
-                  SizedBox(width: 10),
-                  Icon(Icons.email, size: 20),
-                  SizedBox(width: 10),
-                  Icon(Icons.share, size: 20),
+
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Text(" Our mission is to make pharmacist lives easier.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  SizedBox(height: 100),
+                  Text("Need more info? Contact us via \n @amrqhz",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[
+                      IconButton(
+                        icon:  Icon(Icons.telegram, size: 20),
+                        onPressed: () => _launchURL('https://t.me/amrqhz'),
+                      ),
+                      SizedBox(width: 10),
+                      IconButton(
+                        icon: Icon(Icons.email, size: 20),
+                        onPressed: () => _launchURL("https://x.com/amrqhz"),
+                      ),
+                      SizedBox(width: 10),
+                      IconButton(
+                        icon: Icon(Icons.share, size: 20),
+                        onPressed: (){
+                          Share.share("check out this awesome app: https://yourlink.com");
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            ),
-
-      
-      
-          
-            
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            )
           ],
         ),
       ),
