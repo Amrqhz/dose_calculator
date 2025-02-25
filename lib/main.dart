@@ -46,6 +46,9 @@ class MyApp extends StatelessWidget {
 
         ),
       ),
+      themeMode: Provider.of<UserDataProvider>(context).isDarkMode
+          ? ThemeMode.dark
+          : ThemeMode.light,
       home:  SplashScreen(),
       routes: {
         '/login': (context) =>  LoginScreen(),

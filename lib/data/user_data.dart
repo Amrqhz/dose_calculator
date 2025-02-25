@@ -3,6 +3,14 @@ import 'package:flutter/foundation.dart';
 class UserDataProvider extends ChangeNotifier {
   String _id = '';
   String _password = '';
+  bool _isDarkMode = false;
+
+  bool get isDarkMode => _isDarkMode;
+
+  set isDarkMode (bool value) {
+    _isDarkMode = value;
+    notifyListeners();
+  }
 
   String get id => _id;
   String get password => _password;

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../models/drug.dart';
 import '../data/drugs_data.dart';
@@ -260,7 +261,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.account_circle),
+              leading: const Icon(Icons.verified_user_sharp),
               title: const Text('I D' ,style: TextStyle(fontWeight: FontWeight.bold),),
               subtitle:  Text(UserData.email),
               onTap: () {
@@ -314,15 +315,33 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('S E T T I N G S',style: TextStyle(fontWeight: FontWeight.bold)),
-              onTap: () {
-                Navigator.pop(context); // Close the drawer
-              },
+
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0, top: 70),
+              child: Row(
+                children: [
+                  Text("Theme Mode", style: TextStyle(fontWeight: FontWeight.bold),),
+                  CupertinoSwitch(
+                    value: Provider.of<UserDataProvider>(context).isDarkMode, 
+                    onChanged: (value){
+                      Provider.of<UserDataProvider>(context, listen: false).isDarkMode = value;
+                    },
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 90),
+
+
+
+
+            //ListTile(
+              //leading: const Icon(Icons.settings),
+              //title: const Text('S E T T I N G S',style: TextStyle(fontWeight: FontWeight.bold)),
+              //onTap: () {
+                //Navigator.pop(context); // Close the drawer
+              //},
+            //),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Divider(
