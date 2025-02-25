@@ -250,35 +250,26 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.only(top: 30.0),
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text(UserData.email), 
-              accountEmail: null,
-              currentAccountPicture: Container(
-                width: 90,
-                height: 90,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/doctors.png"),
-                  ),
-                ),
-              )
-
+            Icon(Icons.account_circle, size: 80,),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Divider(
+                color: Color(0xFF90A4AE),
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.account_circle),
-              title: const Text('ID' ,style: TextStyle(fontWeight: FontWeight.bold),),
+              title: const Text('I D' ,style: TextStyle(fontWeight: FontWeight.bold),),
               subtitle:  Text(UserData.email),
               onTap: () {
                 Navigator.pop(context); // Close the drawer
               },
             ),
             ListTile(
-              leading: const Icon(Icons.password_outlined),
-              title: const Text('Password',style: TextStyle(fontWeight: FontWeight.bold)),
+              leading: const Icon(Icons.lock),
+              title: const Text('P A S S W O R D',style: TextStyle(fontWeight: FontWeight.bold)),
               subtitle:  Text(UserData.password),
 
               onTap: () {
@@ -323,11 +314,25 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            Spacer(),
-
+            
             ListTile(
-              leading: const Icon(Icons.exit_to_app),
-              title: const Text('Logout', style: TextStyle(fontWeight: FontWeight.bold)),
+              leading: const Icon(Icons.settings),
+              title: const Text('S E T T I N G S',style: TextStyle(fontWeight: FontWeight.bold)),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            const SizedBox(height: 90),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Divider(
+                color: Color(0xFF90A4AE),
+              ),
+            ),
+            
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('L O G O U T', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 // Clear user data
                 UserData.email = '';
